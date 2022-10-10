@@ -10,5 +10,5 @@ jobs:
       - uses: actions/checkout@v3
       - run: echo "${{github.event.issue.pull_request}}++++${{github.event.comment.body}}"
       - run: echo ${{ secrets.GITHUB_TOKEN }} | gh auth login --with-token
-      - run: echo '{"name":"Test Check","head_sha":"${{ github.sha }}"}' | gh api /repos/{owner}/{repo}/check-runs --input -
+      - run: echo '{"name":"docker-push","head_sha":"${{ github.sha }}"}' | gh api /repos/{owner}/{repo}/check-runs --input -
 
