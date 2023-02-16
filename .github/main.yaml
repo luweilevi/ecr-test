@@ -1,0 +1,17 @@
+on:
+  push:
+    branches: [ main ]
+jobs:
+  validation:
+    name: Validation
+    runs-on: [ self-hosted , ts-large-x64-docker-large ]
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Docker auth
+        uses: tradeshift/actions-docker@v1
+        with:
+          password: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY_NOBASE64 }}
+          auth-only: "true"
