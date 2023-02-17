@@ -30,7 +30,12 @@ jobs:
         run: echo Hello, world!
 
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      - id: foo
+        uses: actions/actions-docker-image-sync@v1.1
+        with:
+          image: "tradeshift-base/nginx:sand-9b84a4923e104d5db1c5e63b202448a9c2959704"
+          source-repo: tradeshift-registry.cn-shanghai.cr.aliyuncs.com
+          target-repo: 121118285438.dkr.ecr.cn-northwest-1.amazonaws.com.cn
+#           target_password: ${{ secrets.AWS_ACCESS_KEY }}
+#           target_user: ${{ secrets.AWS_ACCESS_SECRECT }}
+          
