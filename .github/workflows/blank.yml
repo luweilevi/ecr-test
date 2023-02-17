@@ -9,6 +9,7 @@ on:
     branches: [ main, test ]
   pull_request:
     branches: [ main, test ]
+  
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -31,7 +32,7 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - id: foo
-        uses: actions/actions-docker-image-sync@v1.1
+        uses: actions/actions-docker-image-sync@v1
         with:
           image: "tradeshift-base/nginx:sand-9b84a4923e104d5db1c5e63b202448a9c2959704"
           source-repo: tradeshift-registry.cn-shanghai.cr.aliyuncs.com
