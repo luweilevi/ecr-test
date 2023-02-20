@@ -34,9 +34,9 @@ jobs:
       - id: foo
         uses: luweilevi/test-ecr-sync@puppet
         with:
-          image: "tradeshift-base/nginx:sand-9b84a4923e104d5db1c5e63b202448a9c2959704"
+          image: "tradeshift-base/ada-coding:d1ef816a25d782e3aad48fe82e816a14231da771"
           source-repo: tradeshift-registry.cn-shanghai.cr.aliyuncs.com
           target-repo: 121118285438.dkr.ecr.cn-northwest-1.amazonaws.com.cn
-          target_user: ${{ secrets.AWS_ACCESS_KEY }}
-          target_password: ${{ secrets.AWS_ACCESS_SECRET }}
+          cn_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+          cn_access_secret: ${{ secrets.AWS_ACCESS_SECRET }}
           
