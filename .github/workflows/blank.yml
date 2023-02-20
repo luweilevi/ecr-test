@@ -35,6 +35,7 @@ jobs:
         uses: luweilevi/test-ecr-sync@puppet
         with:
           image: "tradeshift-base/ada-coding:d1ef816a25d782e3aad48fe82e816a14231da771"
+          target-image: "test/ada:latest"
           source-repo: tradeshift-registry.cn-shanghai.cr.aliyuncs.com
           target-repo: 121118285438.dkr.ecr.cn-northwest-1.amazonaws.com.cn
           cn_access_key: ${{ secrets.AWS_ACCESS_KEY }}
