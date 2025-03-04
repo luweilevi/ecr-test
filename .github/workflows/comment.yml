@@ -18,8 +18,11 @@ jobs:
   job-c:
     runs-on: ubuntu-latest
     needs: [docker-push, job-b]
+    if: always()
     steps:
-      - name: run
+      - name: run-a
         if: ${{ needs.job-b.result != 'success' }}
         run: echo "this is job-C"
-    
+      - name: run-b
+        if: ${{ needs.job-b.result = 'success' }}
+        run: echo "this is job-C"
