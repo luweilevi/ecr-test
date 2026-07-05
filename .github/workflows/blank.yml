@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: manual CI
 
 # Controls when the action will run. 
 on:
@@ -29,7 +29,8 @@ jobs:
         uses: namespacelabs/breakpoint-action@v0.0.15
         with:
           # One of 'pause' or 'background'. 'pause' will pause your workflow until you tell it to continue (or duration is reached). 'background' will run in the background allowing you to connect at any time during your workflow
-          mode: 'pause'
+          mode: pause
+          authorized-users: github,githubaction,actionusers,ghaction
           # The initial breakpoint duration. This input is ignored when mode is set to backgroun
         
           
