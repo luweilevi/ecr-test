@@ -5,12 +5,6 @@ name: CI
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ main, test ]
-  pull_request:
-    branches: [ main, test ]
-  
-
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -29,15 +23,13 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - id: foo
-        uses: luweilevi/test-ecr-sync@puppet
+      - name: Add a breakpoint to CI
+        # You may pin to the exact commit or the version.
+        # uses: namespacelabs/breakpoint-action@3aae7a13f0a57f433e694fddb74a1a05abeb9b99
+        uses: namespacelabs/breakpoint-action@v0.0.15
         with:
-          image: "12111811111.dkr.ecr.cn-northwest-1.amazonaws.com/tradeshift-base/ada-coding:d1ef816a25d782e3aad48fe82e816a14231da771"
-          target-image: "test/ada:latest"
-          source-repo: tradeshift-registry.cn-shanghai.cr.aliyuncs.com
-          target-repo: 121118285438.dkr.ecr.cn-northwest-1.amazonaws.com.cn
-          cn_access_key: ${{ secrets.AWS_ACCESS_KEY }}
-          cn_access_secret: ${{ secrets.AWS_ACCESS_SECRET }}
+          # One of 'pause' or 'background'. 'pause' will pause your workflow until you tell it to continue (or duration is reached). 'background' will run in the background allowing you to connect at any time during your workflow
+          mode: 'pause'
+          # The initial breakpoint duration. This input is ignored when mode is set to backgroun
+        
           
