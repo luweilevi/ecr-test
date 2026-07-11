@@ -1,0 +1,25 @@
+name: reusable_workflow
+on:
+  workflow_call:
+    inputs:
+      name: 
+        type: string
+        required: false
+    secrets:
+      My_Secret:
+        required: true
+jobs:
+  test:
+    runs-on: ubuntu-slim
+    environment: Sand
+    env:
+      SECRET: ${{secrets.My_Secret}}
+      VAR: ${{vars.My_Var}}
+    steps:
+      - name: shell
+        run: |
+          echo "my var is : $VAR"
+          echo "my secret is : $SECRET"  
+        
+        
+    
