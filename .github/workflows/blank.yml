@@ -13,13 +13,13 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     name: Build
-    uses: ./.github/workflows/main.yaml
+    uses: ./.github/workflows/main.yml
     with:
       name: "Hello"
     secrets: inherit
   Test:
     name: Test
-    uses: ./.github/workflows/main.yaml
+    uses: ./.github/workflows/main.yml
     with:
       name: "Hello"
     secrets: 
