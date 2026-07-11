@@ -12,25 +12,16 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-      - name: Add a breakpoint to CI
-        # You may pin to the exact commit or the version.
-        # uses: namespacelabs/breakpoint-action@3aae7a13f0a57f433e694fddb74a1a05abeb9b99
-        uses: namespacelabs/breakpoint-action@v0.0.15
-        with:
-          # One of 'pause' or 'background'. 'pause' will pause your workflow until you tell it to continue (or duration is reached). 'background' will run in the background allowing you to connect at any time during your workflow
-          mode: pause
-          authorized-users: github,githubaction,actionusers,ghaction
-          # The initial breakpoint duration. This input is ignored when mode is set to backgroun
-        
-          
+    name: Build
+    uses: ./.github/workflows/main.yaml
+    with:
+      name: "Hello"
+    secrets: inherit
+  Test:
+    name: Test
+    uses: ./.github/workflows/main.yaml
+    with:
+      name: "Hello"
+    secrets: 
+      My_Secret: ${{ secrets.My_Secret}}
+    
